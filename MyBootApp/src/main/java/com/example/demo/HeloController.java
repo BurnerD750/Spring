@@ -27,13 +27,13 @@ public class HeloController {
 	MyDataRepository repository;
 	
 	@PersistenceContext
-	EntityManager entityManager; //●
+	EntityManager entityManager;
 	
-	MyDataDaoImpl dao; //●
+	MyDataDaoImpl dao;
 	
 	@PostConstruct
 	public void init(){
-		dao = new MyDataDaoImpl(entityManager); //●
+		dao = new MyDataDaoImpl(entityManager);
 		MyData d1 = new MyData();
 		d1.setName("tuyano");
 		d1.setAge(123);
@@ -59,7 +59,7 @@ public class HeloController {
 		mav.setViewName("index");
 		mav.addObject("title","Find Page");
 		mav.addObject("msg","MyDataのサンプルです。");
-		Iterable<MyData> list = repository.findAllOrderByName(); //dao.getAll(); //●
+		Iterable<MyData> list = repository.findAllOrderByName(); //dao.getAll();
 		mav.addObject("datalist", list);
 		return mav;
 	}
@@ -70,7 +70,7 @@ public class HeloController {
 		mav.addObject("title","Find Page");
 		mav.addObject("msg","MyDataのサンプルです。");
 		mav.addObject("value","");
-		Iterable<MyData> list = dao.getAll(); //●
+		Iterable<MyData> list = dao.getAll();
 		mav.addObject("datalist", list);
 		return mav;
 	}
